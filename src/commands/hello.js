@@ -1,6 +1,6 @@
 // @flow
 import {Command, flags} from 'cli-engine-heroku'
-import addon from '../../native'
+import addon from 'app/native'
 
 export default class HelloWorld extends Command {
   static topic = 'hello'
