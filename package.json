@@ -1,16 +1,23 @@
 {
-  "name": "heroku-cli-hello-world",
-  "version": "0.0.0",
+  "name": "heroku-cli-neon-hello-world",
+  "version": "0.1.0",
+  "description": "",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hone/heroku-cli-neon-hello-world"
+  },
+  "author": "Terence Lee <hone02@gmail.com>",
+  "license": "MIT",
   "files": [
     "lib"
   ],
   "keywords": [
     "heroku-plugin"
   ],
-  "license": "ISC",
   "main": "lib/index.js",
   "scripts": {
-    "build": "babel src -d lib --ignore '*.test.js'",
+    "build": "babel src -d lib --ignore '*.test.js' && neon build",
     "clean": "rimraf lib",
     "prepare": "npm run clean && npm run build",
     "test": "flow check && eslint . && jest",

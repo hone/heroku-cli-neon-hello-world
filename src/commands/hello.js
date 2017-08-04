@@ -1,5 +1,6 @@
 // @flow
 import {Command, flags} from 'cli-engine-heroku'
+import addon from '../../native'
 
 export default class HelloWorld extends Command {
   static topic = 'hello'
@@ -11,6 +12,6 @@ export default class HelloWorld extends Command {
 
   async run () {
     let name = this.flags.name || 'world'
-    this.out.log(`hello ${name}!`)
+    this.out.log(addon.hello(name))
   }
 }
