@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hone/heroku-cli-neon-hello-world"
+    "url": "https://github.com/hone/heroku-cli-neon-hello-world.git"
   },
   "author": "Terence Lee <hone02@gmail.com>",
   "license": "MIT",
@@ -16,17 +16,19 @@
     "heroku-plugin"
   ],
   "scripts": {
-    "build": "babel src -d lib --ignore '*.test.js' && neon build",
+    "build": "babel src -d lib --ignore '*.test.js' && neon build && mkdir -p lib/native && cp native/index.node lib/native/",
     "clean": "rimraf lib",
     "prepare": "npm run clean && npm run build",
     "test": "eslint . && jest",
-    "release": "np"
+    "release": "np",
+    "install": "node-pre-gyp install"
   },
   "dependencies": {
     "babel-plugin-module-alias": "^1.6.0",
     "cli-engine-command": "^5.1.7",
     "cli-engine-config": "^1.3.7",
-    "cli-engine-heroku": "^1.1.1"
+    "cli-engine-heroku": "^1.1.1",
+    "node-pre-gyp": "^0.6.36"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -43,5 +45,12 @@
     "eslint-plugin-standard": "^3.0.1",
     "jest": "^20.0.4",
     "rimraf": "^2.6.1"
+  },
+  "bundledDependencies":["node-pre-gyp"],
+  "binary": {
+    "module_name": "index",
+    "module_path": "./lib/native",
+    "host": "https://github.com/hone/heroku-cli-neon-hello-world/releases/download/",
+    "remote_path": "{version}"
   }
 }

@@ -1,6 +1,9 @@
 // @flow
 import {Command, flags} from 'cli-engine-heroku'
-import addon from 'app/native'
+import binary from 'node-pre-gyp'
+import path from 'path'
+var addonPath = binary.find(path.resolve(path.join(__dirname, '../../package.json')))
+var addon = require(addonPath)
 
 export default class HelloWorld extends Command {
   static topic = 'hello'
