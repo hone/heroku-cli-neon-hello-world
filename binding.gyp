@@ -8,8 +8,14 @@
         {
           "action_name": "neon",
           "inputs": [],
-          "outputs": ["../../../native/index.node"],
-          "action": ["neon", "build"]
+          "outputs": ["../../native/index.node"],
+          "conditions": [
+            [
+              "OS=='win'",
+              { "action": ["cargo build --manifest-path ../native/Cargo.toml --verbose"] },
+              { "action": ["neon", "build"] }
+            ]
+          ]
         }
       ],
     },
