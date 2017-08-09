@@ -2,7 +2,7 @@ environment:
   NODE_PRE_GYP_GITHUB_TOKEN:
     secure: b9xzzRkrgHOhlacE976/umt/xKUX58jxRi/J+OpyS63Z/1fhtUj4/9UvcPc2I5Zn
   nodejs_version: 8
-  channel: beta
+  channel: stable
   target: i686-pc-windows-msvc
 
 platform: x86
@@ -18,10 +18,29 @@ install:
   - cargo -vV
   - ps: Install-Product node $env:nodejs_version
   - npm config set msvs_version 2015
-  - npm install node-gyp node-pre-gyp-github neon-cli -g
+  - npm install node-gyp node-pre-gyp node-pre-gyp-github neon-cli -g
   - yarn install
 
 build: false
 
 test_script:
   - yarn test
+
+after_test:
+  - node-pre-gyp package
+
+artifacts:
+  - name: binary
+    path: build\stage\*\index-v*-node-v*-win32-*.tar.gz
+
+deploy:
+  provider: GitHub
+  description: Release of v$(appveyor_repo_tag_name)
+  auth_token:
+    secure: b9xzzRkrgHOhlacE976/umt/xKUX58jxRi/J+OpyS63Z/1fhtUj4/9UvcPc2I5Zn
+  artifact: binary
+  prerelease: false
+  draft: true
+  force_udpate: true
+  on:
+    appveyor_repo_tag: true

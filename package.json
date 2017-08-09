@@ -16,7 +16,7 @@
     "heroku-plugin"
   ],
   "scripts": {
-    "build": "babel src -d lib --ignore '*.test.js' && neon build && mkdir -p lib/native && cp native/index.node lib/native/",
+    "build": "babel src -d lib --ignore '*.test.js' && node-pre-gyp install --fallback-to-build",
     "clean": "rimraf lib",
     "prepare": "npm run clean && npm run build",
     "test": "eslint . && jest",

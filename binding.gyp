@@ -12,7 +12,7 @@
           "conditions": [
             [
               "OS=='win'",
-              { "action": ["cargo build --manifest-path ../native/Cargo.toml --verbose"] },
+              { "action": ["neon build --path ../"] },
               { "action": ["neon", "build"] }
             ]
           ]
