@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hone/heroku-cli-neon-hello-world"
+    "url": "https://github.com/hone/heroku-cli-neon-hello-world.git"
   },
   "author": "Terence Lee <hone02@gmail.com>",
   "license": "MIT",
@@ -16,11 +16,12 @@
     "heroku-plugin"
   ],
   "scripts": {
-    "build": "babel src -d lib --ignore '*.test.js' && neon build",
+    "build": "babel src -d lib --ignore '*.test.js' && node-pre-gyp install --fallback-to-build",
     "clean": "rimraf lib",
     "prepare": "npm run clean && npm run build",
-    "test": "flow check && eslint . && jest",
-    "release": "np"
+    "test": "eslint . && jest",
+    "release": "np",
+    "install": "node-pre-gyp install --fallback-to-build"
   },
   "dependencies": {
     "babel-plugin-module-alias": "^1.6.0",
@@ -33,7 +34,6 @@
     "babel-eslint": "^7.2.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
-    "babel-preset-flow": "^6.23.0",
     "eslint": "^4.0.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-flowtype": "^2.34.0",
@@ -42,9 +42,18 @@
     "eslint-plugin-node": "^5.0.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
-    "flow-bin": "^0.48.0",
-    "flow-typed": "^2.1.2",
     "jest": "^20.0.4",
+    "neon-cli": "^0.1.18",
+    "node-pre-gyp": "^0.6.36",
     "rimraf": "^2.6.1"
+  },
+  "bundledDependencies": [
+    "node-pre-gyp"
+  ],
+  "binary": {
+    "module_name": "index",
+    "module_path": "./lib/native",
+    "host": "https://github.com/hone/heroku-cli-neon-hello-world/releases/download/",
+    "remote_path": "{version}"
   }
 }
