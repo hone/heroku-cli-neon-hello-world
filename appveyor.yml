@@ -2,21 +2,27 @@ environment:
   NODE_PRE_GYP_GITHUB_TOKEN:
     secure: b9xzzRkrgHOhlacE976/umt/xKUX58jxRi/J+OpyS63Z/1fhtUj4/9UvcPc2I5Zn
   nodejs_version: 8
-  channel: stable
-  target: i686-pc-windows-msvc
+  rust_channel: stable
+  matrix:
+    - platform: x64
+      rust_target: x86_64-pc-windows-msvc
+    - platform: x86
+      rust_target: i686-pc-windows-msvc
 
-platform: x86
+
+platform:
+  - x64
 
 os: Visual Studio 2015
 
 install:
   - wmic os get osarchitecture
   - appveyor DownloadFile https://win.rustup.rs/ -FileName rustup-init.exe
-  - rustup-init -yv --default-toolchain %channel% --default-host %target%
+  - rustup-init -yv --default-toolchain %rust_channel% --default-host %rust_target%
   - set PATH=%PATH%;%USERPROFILE%\.cargo\bin
   - rustc -vV
   - cargo -vV
-  - ps: Install-Product node $env:nodejs_version
+  - ps: Install-Product node $env:NODEJS_VERSION $env:PLATFORM
   - npm config set msvs_version 2015
   - npm install node-gyp node-pre-gyp node-pre-gyp-github neon-cli -g
   - yarn install
