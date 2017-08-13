@@ -16,7 +16,6 @@ platform:
 os: Visual Studio 2015
 
 install:
-  - wmic os get osarchitecture
   - appveyor DownloadFile https://win.rustup.rs/ -FileName rustup-init.exe
   - rustup-init -yv --default-toolchain %rust_channel% --default-host %rust_target%
   - set PATH=%PATH%;%USERPROFILE%\.cargo\bin
