@@ -3,18 +3,35 @@ version: 2
 jobs:
   build:
     docker:
-      - image: node:8.2.1
+      - image: daald/ubuntu32:trusty
     working_directory: ~/cli-plugin
     steps:
+      - run: apt-get update && apt-get install -y curl python build-essential git
       - checkout
+      - run: curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+      - run: apt-get update && apt-get install -y nodejs
+      - run: curl https://sh.rustup.rs -sSf | sh -s -- -y
+      - run: $HOME/.cargo/bin/rustup toolchain install stable-i686-unknown-linux-gnu
+      - run: $HOME/.cargo/bin/rustup default stable-i686-unknown-linux-gnu
+      - run: npm install node-gyp node-pre-gyp node-pre-gyp-github neon-cli yarn -g
+      - run: echo 'export PATH=$HOME/.cargo/bin:$PATH' >> $BASH_ENV
       - restore_cache:
           keys:
             - node-modules-{{ checksum "yarn.lock" }}
             - node-modules-
-      - run: yarn
+      - run: yarn install
       - run: yarn test -- --coverage && bash <(curl -s https://codecov.io/bash)
       - save_cache:
           key: node-modules-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
             - /usr/local/share/.cache/yarn
+      - run: if [[ $CIRCLE_TAG == `git describe --tags --always HEAD` ]]; then node-pre-gyp package; node-pre-gyp-github publish; fi;
+workflows:
+  version: 2
+  build-workflow:
+    jobs:
+      - build:
+          filters:
+            tags:
+              ignore: /^testing/
