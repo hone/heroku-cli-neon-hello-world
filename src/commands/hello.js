@@ -1,3 +1,4 @@
+// @flow
 import {Command, flags} from 'cli-engine-heroku'
 import binary from 'node-pre-gyp'
 import path from 'path'

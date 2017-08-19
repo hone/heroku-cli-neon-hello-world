@@ -1,3 +1,5 @@
+// @flow
+
 import Hello from './hello'
 
 test('it says hello to the world', async () => {
