@@ -21,7 +21,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "gcc"
-version = "0.3.51"
+version = "0.3.52"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
@@ -55,21 +55,21 @@ dependencies = [
 [[package]]
 name = "neon-build"
 version = "0.1.19"
-source = "git+https://github.com/hone/neon?branch=windows_compilation#99be4c82b6230900e088e0d5551d86149a7b9952"
+source = "git+https://github.com/neon-bindings/neon#0cd434c3ca91429e14554490f62c7e5427991374"
 
 [[package]]
 name = "neon-build"
 version = "0.1.19"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-replace = "neon-build 0.1.19 (git+https://github.com/hone/neon?branch=windows_compilation)"
+replace = "neon-build 0.1.19 (git+https://github.com/neon-bindings/neon)"
 
 [[package]]
 name = "neon-runtime"
 version = "0.1.19"
-source = "git+https://github.com/hone/neon?branch=windows_compilation#99be4c82b6230900e088e0d5551d86149a7b9952"
+source = "git+https://github.com/neon-bindings/neon#0cd434c3ca91429e14554490f62c7e5427991374"
 dependencies = [
  "cslice 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "gcc 0.3.51 (registry+https://github.com/rust-lang/crates.io-index)",
+ "gcc 0.3.52 (registry+https://github.com/rust-lang/crates.io-index)",
  "regex 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
@@ -77,7 +77,7 @@ dependencies = [
 name = "neon-runtime"
 version = "0.1.19"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-replace = "neon-runtime 0.1.19 (git+https://github.com/hone/neon?branch=windows_compilation)"
+replace = "neon-runtime 0.1.19 (git+https://github.com/neon-bindings/neon)"
 
 [[package]]
 name = "regex"
@@ -126,14 +126,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [metadata]
 "checksum aho-corasick 0.6.3 (registry+https://github.com/rust-lang/crates.io-index)" = "500909c4f87a9e52355b26626d890833e9e1d53ac566db76c36faa984b889699"
 "checksum cslice 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = "697c714f50560202b1f4e2e09cd50a421881c83e9025db75d15f276616f04f40"
-"checksum gcc 0.3.51 (registry+https://github.com/rust-lang/crates.io-index)" = "120d07f202dcc3f72859422563522b66fe6463a4c513df062874daad05f85f0a"
+"checksum gcc 0.3.52 (registry+https://github.com/rust-lang/crates.io-index)" = "1b7d19683108136d21d32723077e69cd5df2bfd6d102c74a01d743cf2b65cf97"
 "checksum lazy_static 0.2.8 (registry+https://github.com/rust-lang/crates.io-index)" = "3b37545ab726dd833ec6420aaba8231c5b320814b9029ad585555d2a03e94fbf"
 "checksum libc 0.2.29 (registry+https://github.com/rust-lang/crates.io-index)" = "8a014d9226c2cc402676fbe9ea2e15dd5222cd1dd57f576b5b283178c944a264"
 "checksum memchr 1.0.1 (registry+https://github.com/rust-lang/crates.io-index)" = "1dbccc0e46f1ea47b9f17e6d67c5a96bd27030519c519c9c91327e31275a47b4"
 "checksum neon 0.1.19 (registry+https://github.com/rust-lang/crates.io-index)" = "b097a9c8811ef8badfe339c8e045bbe2885c3d519bb4dec63e7f3775161f8f64"
-"checksum neon-build 0.1.19 (git+https://github.com/hone/neon?branch=windows_compilation)" = "<none>"
+"checksum neon-build 0.1.19 (git+https://github.com/neon-bindings/neon)" = "<none>"
 "checksum neon-build 0.1.19 (registry+https://github.com/rust-lang/crates.io-index)" = "3c9dcebef57bdad5d83c2c1b2d001187937cf36a6760d155036c8cd510682438"
-"checksum neon-runtime 0.1.19 (git+https://github.com/hone/neon?branch=windows_compilation)" = "<none>"
+"checksum neon-runtime 0.1.19 (git+https://github.com/neon-bindings/neon)" = "<none>"
 "checksum neon-runtime 0.1.19 (registry+https://github.com/rust-lang/crates.io-index)" = "d6fb07b454e52519c4e09f7523e8f59967984717aa8fe478d9ee53ae05fbb9df"
 "checksum regex 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)" = "1731164734096285ec2a5ec7fea5248ae2f5485b3feeb0115af4fda2183b2d1b"
 "checksum regex-syntax 0.4.1 (registry+https://github.com/rust-lang/crates.io-index)" = "ad890a5eef7953f55427c50575c680c42841653abd2b028b68cd223d157f62db"
