@@ -16,5 +16,5 @@ neon-build = "0.1.19"
 neon = "0.1.19"
 
 [replace]
-"neon-runtime:0.1.19" = { git = "https://github.com/neon-bindings/neon" }
+"neon:0.1.19" = { git = "https://github.com/neon-bindings/neon" }
 "neon-build:0.1.19" = { git = "https://github.com/neon-bindings/neon" }
