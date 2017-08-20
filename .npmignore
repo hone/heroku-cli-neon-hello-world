@@ -1,0 +1,13 @@
+src/
+native/
+build/
+*.node
+*.tgz
+/yarn.lock
+/appveyor.yml
+/.circleci
+/.travis.yml
+/.npmignore
+/.eslintrc
+/.eslintignore
+/.babelrc

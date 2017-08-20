@@ -9,9 +9,6 @@
   },
   "author": "Terence Lee <hone02@gmail.com>",
   "license": "MIT",
-  "files": [
-    "lib"
-  ],
   "keywords": [
     "heroku-plugin"
   ],
